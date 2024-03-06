@@ -13,10 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
+    - name: Install dependencies 1
+      run: sudo add-apt-repository ppa:neurobin/ppa
+    - name: Install dependencies 2
+      run: sudo apt-get update
+    - name: Install dependencies 3
+      run: sudo apt-get install shc
     - name: Build app
       run: make
-    - name: Install dependencies
-      run: sudo add-apt-repository ppa:neurobin/ppa
-      run: sudo apt-get update
-      run: sudo apt-get install shc
