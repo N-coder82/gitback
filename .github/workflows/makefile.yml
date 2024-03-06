@@ -16,3 +16,7 @@ jobs:
 
     - name: Build app
       run: make
+    - name: Install dependencies
+      run: sudo add-apt-repository ppa:neurobin/ppa
+      run: sudo apt-get update
+      run: sudo apt-get install shc
