@@ -4,7 +4,7 @@
 
 # add backup git repo
 
-backup_repo=""
+backup_repo=$(cat ~/.gitback/backuprepo)
 
 # make tmp dir
 mkdir $TMPDIR/gitback-temp
@@ -18,7 +18,8 @@ pwd > $TMPDIR/gitback-temp/backupdir
 backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
 
 # SCRIPT
-
+# adding explination for user
+echo "Backing up... (This may take a while)"
 # go to tmp dir
 cd $TMPDIR/gitback-temp
 # clone git repo
@@ -30,9 +31,9 @@ cp -r "${backupdir}" "backup_repo/"
 
 # push changes to git repo
 cd backup_repo
-git add .
-git commit -m "test commit"
-git push origin main
+git add . &> /dev/null
+git commit -m "test commit" &> /dev/null
+git push origin main &> /dev/null
 cd ..
 # delete the tmp dir
 rm -rf $TMPDIR/gitback-temp/
