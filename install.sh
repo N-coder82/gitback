@@ -12,12 +12,6 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-handle_error() {
-    echo -e "${RED}An error occured.${NC}"
-    exit 1
-}
-
-trap 'handle_error' ERR
 # Function to clone and build gitback
 install_gitback() {
     git clone "https://github.com/N-coder82/gitback.git" &> /dev/null

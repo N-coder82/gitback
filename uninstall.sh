@@ -12,12 +12,6 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-handle_error() {
-    echo -e "${RED}An error occured.${NC}"
-    exit 1
-}
-
-trap 'handle_error' ERR
 uninstall_gitback() {
     sudo rm -f /usr/local/bin/gitback
     rm -rf ~/.gitback
