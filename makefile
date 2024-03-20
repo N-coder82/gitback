@@ -7,19 +7,15 @@ build:
 	@shc -vrf gitback.sh -o gitback
 	@echo Configuring Executables...
 	@chmod +x gitback
-	@mv gitback ./dist
 	@rm -f "gitback.sh.x.c"
 	@echo Finished!
 install:
-	@echo Building app...
 	@shc -vrf gitback.sh -o gitback
 	@echo Configuring Executables...
 	@chmod +x gitback
-	@echo Installing...
 	@sudo rm -f /usr/local/bin/gitback
 	@sudo mv gitback /usr/local/bin/
 	@rm -f "gitback.sh.x.c"
-	@echo Finished!
 debug:
 	@echo Building app...
 	@shc -vrf gitback.sh -o gitback_debug
