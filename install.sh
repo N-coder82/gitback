@@ -12,6 +12,12 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+# Checking for dependencies
+
+where shc
+if [ $? -ne 0 ]; then
+  echo -e "${RED}Install shc at https://github.com/neurobin/shc${NC}"
+fi
 # Function to clone and build gitback
 install_gitback() {
     git clone "https://github.com/N-coder82/gitback.git" &> /dev/null
