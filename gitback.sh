@@ -1,39 +1,48 @@
 #!/bin/bash
 
-# VARIABLES
-
-# add backup git repo
+# Variables:
 
 backup_repo=$(cat ~/.gitback/backuprepo)
 
-# make tmp dir
-mkdir $TMPDIR/gitback-temp
+# Functions:
 
-# add backup dir name to tmp dir
+temp_dir_setup() {
+mkdir $TMPDIR/gitback-temp
 basename "$PWD" > $TMPDIR/gitback-temp/dirname
 dirname=$(cat $TMPDIR/gitback-temp/dirname)
-
-# add backup dir to tmp dir
 pwd > $TMPDIR/gitback-temp/backupdir
 backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
-
-# SCRIPT
-# adding explination for user
+}
+user_info() {
 echo "Backing up... (This may take a while)"
-# go to tmp dir
+}
+update_repo() {
 cd $TMPDIR/gitback-temp
-# clone git repo
 git clone --quiet $backup_repo backup_repo
-# delete the dir thats going to be backed up (old ver) from git repo
 rm -rf backup_repo/$dirname
-# copy the fresh dir to be backed up into git repo
 cp -r "${backupdir}" "backup_repo/"
-
-# push changes to git repo
+}
+push_changes() {
 cd backup_repo
 git add . &> /dev/null
-git commit -m "test commit" &> /dev/null
+commit_message = $(date)
+git commit -m 'gitback backup at: ${commit_message}' &> /dev/null
 git push origin main &> /dev/null
+}
+cleanup() {
 cd ..
-# delete the tmp dir
-rm -rf $TMPDIR/gitback-temp/
+rm -rf $TMPDIR/gitback-temp
+}
+
+# Main Script
+
+# Setup the temporray directory
+temp_dir_setup
+# Show info about the backup to the user
+user_info
+# Update the repository with the new folder
+update_repo
+# Push the changes
+push_changes
+# Cleanup our giant mess.
+cleanup

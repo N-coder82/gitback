@@ -11,7 +11,6 @@ build:
 	@echo Finished!
 install:
 	@shc -vrf gitback.sh -o gitback
-	@echo Configuring Executables...
 	@chmod +x gitback
 	@sudo rm -f /usr/local/bin/gitback
 	@sudo mv gitback /usr/local/bin/
