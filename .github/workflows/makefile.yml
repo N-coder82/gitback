@@ -16,6 +16,10 @@ jobs:
 
     - name: install shc git repo
       run: git clone https://github.com/neurobin/shc
+      uses: actions/upload-artifact@v4
+      with:
+          name: shc-folder
+          path: shc
     - name: go into folder
       run: cd shc
     - name: configure
