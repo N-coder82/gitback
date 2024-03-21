@@ -25,8 +25,8 @@ cp -r "${backupdir}" "backup_repo/"
 push_changes() {
 cd backup_repo
 git add . &> /dev/null
-commit_message = $(date)
-git commit -m 'gitback backup at: ${commit_message}' &> /dev/null
+commit_message=$(date)
+git commit -m "gitback backup at: ${commit_message}" &> /dev/null
 git push origin main &> /dev/null
 }
 cleanup() {
