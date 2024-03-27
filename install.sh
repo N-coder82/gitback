@@ -28,7 +28,7 @@ install_gitback() {
 # Function to get user input and save it to gitbackrepo file
 save_input_to_file() {
     read -p "$(echo -e "${YELLOW}Enter your backup repository:${NC} ")" input
-    echo "$input" > ~/.gitback/gitbackrepo
+    echo "$input" > ~/.gitback/backuprepo
 }
 
 # Cleanup function
