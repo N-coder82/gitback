@@ -14,8 +14,11 @@ mkdir $TMPDIR/gitback-temp
 basename "$PWD" > $TMPDIR/gitback-temp/dirname
 dirname=$(cat $TMPDIR/gitback-temp/dirname)
 pwd > $TMPDIR/gitback-temp/backupdir
-# TODO: setup if statement for args
-backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
+if [ "$#" -eq 0 ]; then
+  backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
+else
+  backupdir="${1}"
+fi
 }
 user_info() {
 echo -e "${YELLOW}Backing up... (This may take a while)${NC} "
