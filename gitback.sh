@@ -11,18 +11,23 @@ NC='\033[0m' # No Color
 
 temp_dir_setup() {
 mkdir $TMPDIR/gitback-temp
-if [ $# -lt 1 ]
-then
-  basename "$PWD" > $TMPDIR/gitback-temp/dirname
-  dirname=$(cat $TMPDIR/gitback-temp/dirname)
-  pwd > $TMPDIR/gitback-temp/backupdir
-  backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
-else
-  echo $1 > $TMPDIR/gitback-temp/backupdir
-  backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
-  basename $backupdir > $TMPDIR/gitback-temp/dirname
-  dirname=$(cat $TMPDIR/gitback-temp/dirname)
-fi
+# Broken code DO NOT UNCOMMENT UNTIL FIXED :pray::pray::pray:
+# if [ $# -lt 1 ]
+# then
+#   basename "$PWD" > $TMPDIR/gitback-temp/dirname
+#   dirname=$(cat $TMPDIR/gitback-temp/dirname)
+#   pwd > $TMPDIR/gitback-temp/backupdir
+#   backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
+# else
+#   echo $1 > $TMPDIR/gitback-temp/backupdir
+#   backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
+#   basename $backupdir > $TMPDIR/gitback-temp/dirname
+#   dirname=$(cat $TMPDIR/gitback-temp/dirname)
+# fi
+basename "$PWD" > $TMPDIR/gitback-temp/dirname
+dirname=$(cat $TMPDIR/gitback-temp/dirname)
+pwd > $TMPDIR/gitback-temp/backupdir
+backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
 }
 user_info() {
 echo -e "${YELLOW}Backing up... (This may take a while)${NC} "
