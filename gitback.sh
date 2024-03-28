@@ -17,7 +17,7 @@ if [ "$#" -eq 0 ]; then
   pwd > $TMPDIR/gitback-temp/backupdir
   backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
 else
-  $1 > $TMPDIR/gitback-temp/backupdir
+  echo $1 > $TMPDIR/gitback-temp/backupdir
   backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
   basename $backupdir > $TMPDIR/gitback-temp/dirname
   dirname=$(cat $TMPDIR/gitback-temp/dirname)
