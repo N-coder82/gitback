@@ -11,7 +11,8 @@ NC='\033[0m' # No Color
 
 temp_dir_setup() {
 mkdir $TMPDIR/gitback-temp
-if [ $# -lt 1 ]; then
+if [ $# -lt 1 ]
+then
   basename "$PWD" > $TMPDIR/gitback-temp/dirname
   dirname=$(cat $TMPDIR/gitback-temp/dirname)
   pwd > $TMPDIR/gitback-temp/backupdir
