@@ -11,16 +11,16 @@ NC='\033[0m' # No Color
 
 temp_dir_setup() {
 mkdir $TMPDIR/gitback-temp
-if [ "$#" -eq 0 ]; then
-  basename "$PWD" > $TMPDIR/gitback-temp/dirname
-  dirname=$(cat $TMPDIR/gitback-temp/dirname)
-  pwd > $TMPDIR/gitback-temp/backupdir
-  backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
-else
+if [ -n "${argument[0]}" ]; then
   echo $1 > $TMPDIR/gitback-temp/backupdir
   backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
   basename $backupdir > $TMPDIR/gitback-temp/dirname
   dirname=$(cat $TMPDIR/gitback-temp/dirname)
+else
+  basename "$PWD" > $TMPDIR/gitback-temp/dirname
+  dirname=$(cat $TMPDIR/gitback-temp/dirname)
+  pwd > $TMPDIR/gitback-temp/backupdir
+  backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
 fi
 }
 user_info() {
