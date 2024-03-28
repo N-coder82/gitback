@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 # Checking for dependencies
 
-where shc
+whereis shc
 if [ $? -ne 0 ]; then
   echo -e "${RED}Install shc at https://github.com/neurobin/shc${NC}"
 fi
