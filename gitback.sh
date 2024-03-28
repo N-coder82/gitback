@@ -17,7 +17,7 @@ pwd > $TMPDIR/gitback-temp/backupdir
 if [ "$#" -eq 0 ]; then
   backupdir=$(cat $TMPDIR/gitback-temp/backupdir)
 else
-  backupdir="${1}"
+  backupdir="$1"
 fi
 }
 user_info() {
